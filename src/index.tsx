@@ -1,6 +1,7 @@
 import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { App, Preloader } from './components'
+import './index.css'
 
 const rootNode = document.getElementById('root')!
 const root = createRoot(rootNode)
