@@ -1,4 +1,4 @@
-import './Preloader.css'
+import './Preloader.css';
 
 export const Preloader = () => {
   return (
@@ -7,5 +7,5 @@ export const Preloader = () => {
         <span className="preloader__round"></span>
       </div>
     </div>
-  )
-}
+  );
+};

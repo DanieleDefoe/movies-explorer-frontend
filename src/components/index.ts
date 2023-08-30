@@ -1,2 +1,2 @@
-export * from './App'
-export * from './Preloader'
+export * from './App';
+export * from './Preloader';

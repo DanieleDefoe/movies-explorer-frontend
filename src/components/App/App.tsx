@@ -1,22 +1,22 @@
-import { lazy } from 'react'
+import { lazy } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
   Route,
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 const AppLayout = lazy(() =>
   import('../../layouts/AppLayout').then((module) => ({
     default: module.AppLayout,
   })),
-)
+);
 
 const SimpleLayout = lazy(() =>
   import('../../layouts/SimpleLayout').then((module) => ({
     default: module.SimpleLayout,
   })),
-)
+);
 
 const routes = createRoutesFromElements(
   <Route path="/">
@@ -32,10 +32,10 @@ const routes = createRoutesFromElements(
       <Route path="*" element={<h1>HELLO</h1>} />
     </Route>
   </Route>,
-)
+);
 
-const router = createBrowserRouter(routes)
+const router = createBrowserRouter(routes);
 
 export const App = () => {
-  return <RouterProvider router={router} />
-}
+  return <RouterProvider router={router} />;
+};

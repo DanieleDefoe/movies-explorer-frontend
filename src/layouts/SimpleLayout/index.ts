@@ -1,1 +1,1 @@
-export * from './SimpleLayout'
+export * from './SimpleLayout';
