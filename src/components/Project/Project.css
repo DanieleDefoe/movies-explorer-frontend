@@ -1,0 +1,28 @@
+.project {
+  width: 100%;
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--tertiary-element-color, #424242);
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s linear;
+  border-radius: 1rem;
+}
+
+.project__content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project__title {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 5rem;
+  letter-spacing: -1.2px;
+}
+
+.project:hover {
+  background: var(--tertiary-element-color, #424242);
+}

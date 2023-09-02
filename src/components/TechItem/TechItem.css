@@ -1,0 +1,11 @@
+.tech {
+  padding-inline: 2.6rem;
+  padding-block: 2.2rem;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+  background: var(--secondary-element-color, #303030);
+  border-radius: 1rem;
+}

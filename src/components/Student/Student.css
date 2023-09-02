@@ -1,0 +1,96 @@
+.student {
+  width: 100%;
+  padding-inline: 7rem;
+  padding-bottom: 12.5rem;
+  padding-top: 11rem;
+  background: var(--primary-bg-color, #202020);
+  color: #fff;
+}
+
+.student__info {
+  padding-top: 6.6rem;
+  padding-bottom: 10rem;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    'text image'
+    'github image';
+  grid-template-columns: minmax(min-content, 600px) minmax(270px, 1fr);
+  grid-template-rows: 1fr min-content;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.student__texts {
+  width: 100%;
+  max-width: 600px;
+  grid-area: text;
+}
+
+.student__title {
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 5.8rem;
+  letter-spacing: -0.2rem;
+}
+
+.student__image {
+  width: 100%;
+  max-width: 27rem;
+  border-radius: 1rem;
+  height: 32.7rem;
+  object-fit: cover;
+  justify-self: flex-end;
+  grid-area: image;
+}
+
+.student__general,
+.student__bio,
+.student__portfolio {
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
+}
+
+.student__general {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2rem;
+  margin-top: 1.8rem;
+}
+
+.student__bio {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.2rem;
+  margin-top: 2.6rem;
+}
+
+.student__github {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #fff;
+  text-decoration: none;
+  grid-area: github;
+  transition: all 0.2s linear;
+  width: min-content;
+}
+
+.student__github:hover {
+  opacity: 0.7;
+}
+
+.student__portfolio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.student__portfolio-title {
+  color: #8b8b8b;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 2rem;
+}

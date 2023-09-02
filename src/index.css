@@ -1,3 +1,5 @@
+@import './vendor/inter/inter.css';
+
 *,
 *::before,
 *::after {
@@ -9,9 +11,25 @@
 :root {
   font-size: 10px;
   --primary-bg-color: #202020;
+  --secondary-bg-color: #272727;
+  --tertiary-bg-color: #073042;
+  --primary-element-color: #3ddc84;
+  --seconday-element-color: #303030;
+  --tertiary-element-color: #424242;
+  scroll-behavior: smooth;
 }
 
 body {
+  font-family: 'Inter';
   background: var(--primary-bg-color, #202020);
   width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }

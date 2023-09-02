@@ -1,0 +1,19 @@
+.title-container {
+  width: 100%;
+  color: #fff;
+}
+
+.title-container__title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+}
+
+.title-container__divider {
+  width: 100%;
+  height: 0.1rem;
+  border: none;
+  background: #dadada;
+  margin-top: 2.3rem;
+}

@@ -18,10 +18,16 @@ const SimpleLayout = lazy(() =>
   })),
 );
 
+const MainPage = lazy(() =>
+  import('../../pages/MainPage').then((module) => ({
+    default: module.MainPage,
+  })),
+);
+
 const routes = createRoutesFromElements(
   <Route path="/">
     <Route element={<AppLayout />}>
-      <Route index element={<h1>О проекте</h1>} />
+      <Route index element={<MainPage />} />
       <Route path="movies" />
       <Route path="saved-movies" />
       <Route path="profile" />

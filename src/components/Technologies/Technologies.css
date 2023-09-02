@@ -1,0 +1,38 @@
+.technologies {
+  width: 100%;
+  padding-inline: 7rem;
+  padding-block: 10rem;
+  background: var(--secondary-bg-color, #272727);
+  color: #fff;
+}
+
+.technologies__info {
+  text-align: center;
+  margin-top: 9rem;
+}
+
+.technologies__title {
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 5.8rem;
+  letter-spacing: -0.2rem;
+}
+
+.technologies__subtitle {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2rem;
+  letter-spacing: -0.56px;
+  max-width: 46rem;
+  margin-inline: auto;
+  margin-top: 2.6rem;
+}
+
+.technologies__list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 100px;
+}
