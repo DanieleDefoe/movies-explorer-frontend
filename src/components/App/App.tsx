@@ -36,6 +36,12 @@ const SavedMovies = lazy(() =>
   })),
 );
 
+const NotFoundPage = lazy(() =>
+  import('../../pages/NotFoundPage').then((module) => ({
+    default: module.NotFoundPage,
+  })),
+);
+
 const routes = createRoutesFromElements(
   <Route path="/">
     <Route element={<AppLayout />}>
@@ -47,7 +53,7 @@ const routes = createRoutesFromElements(
     <Route element={<SimpleLayout />}>
       <Route path="signin" />
       <Route path="signup" />
-      <Route path="*" element={<h1>HELLO</h1>} />
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Route>,
 );

@@ -40,7 +40,7 @@ export const Header = () => {
             </NavLink>
           </li>
         </ul>
-        <NavLink to="/account" className="header__account">
+        <NavLink to="/profile" className="header__account">
           <p>Аккаунт</p>
           <div className="header__account-icon">
             <img src={images.account} alt="аккаунт" />

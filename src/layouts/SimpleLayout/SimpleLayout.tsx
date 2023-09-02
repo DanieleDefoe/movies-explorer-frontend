@@ -3,8 +3,8 @@ import './SimpleLayout.css';
 
 export const SimpleLayout = () => {
   return (
-    <section>
-      simple layout <Outlet />
+    <section className="simple-layout">
+      <Outlet />
     </section>
   );
 };

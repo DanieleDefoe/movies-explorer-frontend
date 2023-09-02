@@ -1,0 +1,45 @@
+.not-found {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.not-found__error,
+.not-found__message,
+.not-found__link {
+  font-weight: 400;
+  line-height: normal;
+}
+
+.not-found__error {
+  font-size: 14rem;
+}
+
+.not-found__message {
+  font-size: 1.6rem;
+}
+
+.not-found__link {
+  color: #4285f4;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: all 0.2s linear;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.not-found__link:hover {
+  opacity: 0.8;
+}
