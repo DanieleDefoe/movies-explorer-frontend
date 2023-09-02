@@ -6,7 +6,7 @@ import { Preloader } from '..';
 
 export const Main: FC<MainProps> = ({ children }) => {
   return (
-    <main>
+    <main className="main">
       <Suspense fallback={<Preloader />}>{children}</Suspense>
     </main>
   );

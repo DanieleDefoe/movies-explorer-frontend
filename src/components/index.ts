@@ -11,3 +11,8 @@ export * from './Technologies';
 export * from './TechItem';
 export * from './Student';
 export * from './Project';
+export * from './SearchBar';
+export * from './MovieForm';
+export * from './Checkbox';
+export * from './Movies';
+export * from './Movie';

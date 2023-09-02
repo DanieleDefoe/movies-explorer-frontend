@@ -1,0 +1,10 @@
+.movie-form {
+  margin-top: 7rem;
+  padding-bottom: 4.3rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 2.6rem;
+  color: #fff;
+  border-bottom: 1px solid #aaaaaa20;
+}

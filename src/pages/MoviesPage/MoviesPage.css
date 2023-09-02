@@ -1,0 +1,13 @@
+.movies-page,
+.movie,
+.movies,
+.movie__info,
+.movie,
+.movies__grid,
+.movies__more {
+  width: 100%;
+}
+
+.movies-page {
+  padding-inline: 7rem;
+}

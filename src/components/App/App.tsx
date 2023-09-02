@@ -24,12 +24,24 @@ const MainPage = lazy(() =>
   })),
 );
 
+const MoviesPage = lazy(() =>
+  import('../../pages/MoviesPage').then((module) => ({
+    default: module.MoviesPage,
+  })),
+);
+
+const SavedMovies = lazy(() =>
+  import('../../pages/SavedMoviesPage').then((module) => ({
+    default: module.SavedMovies,
+  })),
+);
+
 const routes = createRoutesFromElements(
   <Route path="/">
     <Route element={<AppLayout />}>
       <Route index element={<MainPage />} />
-      <Route path="movies" />
-      <Route path="saved-movies" />
+      <Route path="movies" element={<MoviesPage />} />
+      <Route path="saved-movies" element={<SavedMovies />} />
       <Route path="profile" />
     </Route>
     <Route element={<SimpleLayout />}>
