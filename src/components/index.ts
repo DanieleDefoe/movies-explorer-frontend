@@ -23,3 +23,5 @@ export * from './Form';
 export * from './Submit';
 export * from './AuthBottomControls';
 export * from './Auth';
+export * from './ProfileForm';
+export * from './ProfileData';
