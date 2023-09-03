@@ -43,13 +43,19 @@ const NotFoundPage = lazy(() =>
   })),
 );
 
+const ProfilePage = lazy(() =>
+  import('../../pages/ProfilePage').then((module) => ({
+    default: module.ProfilePage,
+  })),
+);
+
 const routes = createRoutesFromElements(
   <Route path={paths.root}>
     <Route element={<AppLayout />}>
       <Route index element={<MainPage />} />
       <Route path={paths.movies} element={<MoviesPage />} />
       <Route path={paths.saved} element={<SavedMovies />} />
-      <Route path={paths.profile} />
+      <Route path={paths.profile} element={<ProfilePage />} />
     </Route>
     <Route element={<SimpleLayout />}>
       <Route path={paths.signin} />
