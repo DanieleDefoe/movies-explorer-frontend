@@ -55,6 +55,12 @@ const RegisterPage = lazy(() =>
   })),
 );
 
+const LoginPage = lazy(() =>
+  import('../../pages/LoginPage').then((module) => ({
+    default: module.LoginPage,
+  })),
+);
+
 const routes = createRoutesFromElements(
   <Route path={paths.root}>
     <Route element={<AppLayout />}>
@@ -64,7 +70,7 @@ const routes = createRoutesFromElements(
       <Route path={paths.profile} element={<ProfilePage />} />
     </Route>
     <Route element={<SimpleLayout />}>
-      <Route path={paths.signin} />
+      <Route path={paths.signin} element={<LoginPage />} />
       <Route path={paths.signup} element={<RegisterPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
