@@ -1,0 +1,10 @@
+.label {
+  color: var(--secondary-text-color, #8b8b8b);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.label:hover {
+  cursor: pointer;
+}

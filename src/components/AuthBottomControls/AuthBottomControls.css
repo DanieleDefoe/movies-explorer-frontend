@@ -1,0 +1,22 @@
+.controls {
+  width: 100%;
+  margin-top: 11rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls__question {
+  color: var(--secondary-text-color, #8b8b8b);
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.controls__link {
+  text-decoration: none;
+  color: var(--another-color, #4285f4);
+}

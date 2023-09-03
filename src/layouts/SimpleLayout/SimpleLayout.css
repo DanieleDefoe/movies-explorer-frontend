@@ -3,4 +3,7 @@
   padding-block: 7rem;
   box-sizing: border-box;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

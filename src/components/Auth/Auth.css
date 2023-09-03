@@ -1,0 +1,22 @@
+.auth {
+  width: 100%;
+  max-width: 39.6rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  text-align: start;
+}
+
+.auth__icon,
+.auth__message {
+  align-self: flex-start;
+}
+
+.auth__message {
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: normal;
+}
