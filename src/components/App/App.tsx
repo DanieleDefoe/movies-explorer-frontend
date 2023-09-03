@@ -1,3 +1,4 @@
+import { paths } from '../../utils';
 import { lazy } from 'react';
 import {
   createBrowserRouter,
@@ -43,16 +44,16 @@ const NotFoundPage = lazy(() =>
 );
 
 const routes = createRoutesFromElements(
-  <Route path="/">
+  <Route path={paths.root}>
     <Route element={<AppLayout />}>
       <Route index element={<MainPage />} />
-      <Route path="movies" element={<MoviesPage />} />
-      <Route path="saved-movies" element={<SavedMovies />} />
-      <Route path="profile" />
+      <Route path={paths.movies} element={<MoviesPage />} />
+      <Route path={paths.saved} element={<SavedMovies />} />
+      <Route path={paths.profile} />
     </Route>
     <Route element={<SimpleLayout />}>
-      <Route path="signin" />
-      <Route path="signup" />
+      <Route path={paths.signin} />
+      <Route path={paths.signup} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Route>,
