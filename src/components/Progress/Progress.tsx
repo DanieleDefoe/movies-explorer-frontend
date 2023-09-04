@@ -10,9 +10,10 @@ export const Progress: FC<ProgressProps> = ({
   title,
   bg,
   maxWidth,
+  className,
 }) => {
   return (
-    <div className="progress" style={{ maxWidth }}>
+    <div className={`progress ${className}`} style={{ maxWidth }}>
       <p className="progress_percentage" style={{ color, background: bg }}>
         {percentage}
       </p>

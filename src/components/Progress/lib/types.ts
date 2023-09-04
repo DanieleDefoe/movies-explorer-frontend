@@ -4,4 +4,5 @@ export interface ProgressProps {
   bg: string;
   title: string;
   maxWidth?: string;
+  className?: string;
 }

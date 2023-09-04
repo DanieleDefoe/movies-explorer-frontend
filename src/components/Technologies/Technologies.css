@@ -16,6 +16,7 @@
   font-weight: 400;
   line-height: 5.8rem;
   letter-spacing: -0.2rem;
+  margin-inline: auto;
 }
 
 .technologies__subtitle {
@@ -33,6 +34,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin-top: 100px;
+  gap: 1rem;
+  margin-top: 10rem;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1024px) {
+  .technologies {
+    padding-block: 9rem;
+    padding-inline: 5rem;
+  }
+
+  .technologies__info {
+    margin-top: 8rem;
+  }
+
+  .technologies__title {
+    max-width: 60rem;
+  }
+
+  .technologies__subtitle {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2rem;
+    max-width: 46rem;
+    margin-top: 2.2rem;
+  }
+
+  .technologies__list {
+    margin-top: 8.3rem;
+  }
 }

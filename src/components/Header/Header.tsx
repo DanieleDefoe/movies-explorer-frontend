@@ -1,12 +1,13 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, FC } from 'react';
 
 import './Header.css';
 
 import { images } from '../../images';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { paths } from '../../utils';
+import { HeaderProps } from './lib/types';
 
-export const Header = () => {
+export const Header: FC<HeaderProps> = ({ handleMenuClick }) => {
   const location = useLocation();
   const styles: CSSProperties = {
     background:
@@ -30,17 +31,22 @@ export const Header = () => {
               Войти
             </NavLink>
           </li>
-          <li className="header_nav-item">
+          <li className="header_nav-item header__movies">
             <NavLink to={paths.movies} className="header__link">
               Фильмы
             </NavLink>
           </li>
-          <li className="header_nav-item">
+          <li className="header_nav-item header__saved">
             <NavLink to={paths.saved} className="header__link">
               Сохранённые фильмы
             </NavLink>
           </li>
         </ul>
+        <button
+          className="header__burger"
+          onClick={handleMenuClick}
+          aria-label="бургер меню"
+        />
         <NavLink to={paths.profile} className="header__account">
           <p>Аккаунт</p>
           <div className="header__account-icon">

@@ -25,3 +25,4 @@ export * from './AuthBottomControls';
 export * from './Auth';
 export * from './ProfileForm';
 export * from './ProfileData';
+export * from './Menu';

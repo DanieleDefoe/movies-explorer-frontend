@@ -38,3 +38,20 @@
   display: flex;
   width: 100%;
 }
+
+@media screen and (max-width: 1024px) {
+  .about {
+    padding-inline: 5rem;
+    padding-block: 9rem;
+  }
+
+  .about__info {
+    gap: 3rem;
+    padding-bottom: 9.3rem;
+  }
+
+  .about__info-text {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}

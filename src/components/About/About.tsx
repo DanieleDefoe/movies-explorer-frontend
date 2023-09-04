@@ -32,6 +32,7 @@ export const About = () => {
           color="#000"
           bg="var(--primary-element-color, #3ddc84)"
           title="Back-end"
+          className="progress_type_green"
         />
         <Progress
           percentage="4 недели"

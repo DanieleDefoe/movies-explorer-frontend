@@ -1,0 +1,98 @@
+.menu-wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  background: #00000030;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-wrapper_active {
+  visibility: unset;
+  opacity: unset;
+}
+
+.menu {
+  width: 100%;
+  position: absolute;
+  min-height: 100vh;
+  max-width: 52rem;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  background: var(--primary-bg-color, #202020);
+  transition: all 0.5s ease;
+}
+
+.menu_active {
+  transform: unset;
+}
+
+.menu__exit {
+  width: 2.2rem;
+  height: 2.2rem;
+  position: absolute;
+  right: 2.3rem;
+  top: 2.3rem;
+  background: url(../../images/cross.svg) center;
+  border: none;
+}
+
+.menu__nav {
+  margin-top: 16rem;
+}
+
+.menu__nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu__link {
+  color: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  padding-bottom: 0.4rem;
+  transition: all 0.2s linear;
+}
+
+.menu__link:hover {
+  opacity: 0.7;
+}
+
+.menu__link_type_profile {
+  position: absolute;
+  left: 50%;
+  bottom: 9.2rem;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+}
+
+.menu__link_active {
+  border-bottom: 0.2rem solid #fff;
+}
+
+.menu__profile-icon {
+  width: 3rem;
+  height: 3rem;
+  background: #313131;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -22,3 +22,9 @@
   line-height: 1.7rem;
   color: #8b8b8b;
 }
+
+@media screen and (max-width: 768px) {
+  .progress_type_green {
+    max-width: 14rem !important;
+  }
+}
