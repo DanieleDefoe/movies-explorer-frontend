@@ -11,3 +11,9 @@
 .movies-page {
   padding-inline: 7rem;
 }
+
+@media screen and (max-width: 1024px) {
+  .movies-page {
+    padding-inline: 3rem;
+  }
+}

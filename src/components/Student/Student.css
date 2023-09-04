@@ -124,6 +124,11 @@
     line-height: 1.8rem;
   }
 
+  .student__image {
+    width: 25.5rem;
+    height: 30.7rem;
+  }
+
   .student__portfolio {
     gap: 5rem;
   }

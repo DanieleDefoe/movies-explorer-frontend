@@ -40,6 +40,12 @@
   top: 2.3rem;
   background: url(../../images/cross.svg) center;
   border: none;
+  transition: all 0.2s linear;
+}
+
+.menu__exit:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .menu__nav {

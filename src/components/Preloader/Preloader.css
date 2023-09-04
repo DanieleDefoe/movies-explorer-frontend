@@ -48,6 +48,8 @@
   z-index: 10;
   padding: 20px;
   align-self: center;
+  position: relative;
+  z-index: 1000;
 }
 
 .preloader__container {

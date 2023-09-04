@@ -19,6 +19,7 @@ export const Menu: FC<MenuProps> = ({ isMenuOpen, handleExitClick }) => {
           <ul className="menu__nav-list">
             <li>
               <NavLink
+                onClick={handleExitClick}
                 className={({ isActive }) =>
                   `menu__link ${isActive ? 'menu__link_active' : ''}`
                 }
@@ -29,6 +30,7 @@ export const Menu: FC<MenuProps> = ({ isMenuOpen, handleExitClick }) => {
             </li>
             <li>
               <NavLink
+                onClick={handleExitClick}
                 className={({ isActive }) =>
                   `menu__link ${isActive ? 'menu__link_active' : ''}`
                 }
@@ -39,6 +41,7 @@ export const Menu: FC<MenuProps> = ({ isMenuOpen, handleExitClick }) => {
             </li>
             <li>
               <NavLink
+                onClick={handleExitClick}
                 className={({ isActive }) =>
                   `menu__link ${isActive ? 'menu__link_active' : ''}`
                 }
@@ -49,6 +52,7 @@ export const Menu: FC<MenuProps> = ({ isMenuOpen, handleExitClick }) => {
             </li>
           </ul>
           <NavLink
+            onClick={handleExitClick}
             className={({ isActive }) =>
               `menu__link menu__link_type_profile ${
                 isActive ? 'menu__link_active' : ''

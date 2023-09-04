@@ -8,3 +8,9 @@
   color: #fff;
   border-bottom: 1px solid #aaaaaa20;
 }
+
+@media screen and (max-width: 1024px) {
+  .movie-form {
+    padding-bottom: 5rem;
+  }
+}

@@ -7,7 +7,7 @@
 
 .movies__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   align-content: center;
   justify-content: center;
   column-gap: 2.8rem;
@@ -31,4 +31,15 @@
   padding-block: 1rem;
   transition: all 0.2s linear;
   border-radius: 0.6rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .movies__grid {
+    column-gap: 2.4rem;
+    row-gap: 3.5rem;
+  }
+
+  .movies {
+    gap: 8rem;
+  }
 }
