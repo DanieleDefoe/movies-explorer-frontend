@@ -26,14 +26,6 @@ export const ProfileForm = () => {
           id="email"
         />
       </fieldset>
-      <div className="profile-form__buttons">
-        <button className="profile-form__edit" type="button">
-          Редактировать
-        </button>
-        <button className="profile-form__signout" type="button">
-          Выйти из аккаунта
-        </button>
-      </div>
     </form>
   );
 };

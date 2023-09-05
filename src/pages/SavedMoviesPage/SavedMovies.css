@@ -8,3 +8,9 @@
     padding-inline: 3rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .saved-movies {
+    padding-inline: 1.8rem;
+  }
+}

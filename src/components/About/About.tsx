@@ -28,7 +28,6 @@ export const About = () => {
       <div className="about__progresses">
         <Progress
           percentage="1 неделя"
-          maxWidth="228px"
           color="#000"
           bg="var(--primary-element-color, #3ddc84)"
           title="Back-end"

@@ -42,11 +42,29 @@
   border: none;
   color: #fff;
   border-radius: 0.5rem;
-  min-height: 52px;
+  min-height: 5.2rem;
   transition: all 0.2s linear;
 }
 
 .search__submit:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+  .search {
+    padding-block: 0.6rem;
+    padding-right: 0.6rem;
+    padding-left: 1.2rem;
+  }
+
+  .search__input {
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+  }
+
+  .search__submit {
+    width: 8rem;
+    min-height: 4.4rem;
+  }
 }

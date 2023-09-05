@@ -16,7 +16,7 @@ export const Hero = () => {
           Узнать больше
         </a>
       </div>
-      <img src={images.hero} alt="глобус" />
+      <img src={images.hero} alt="глобус" className="hero__image" />
     </section>
   );
 };

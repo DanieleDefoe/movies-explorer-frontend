@@ -47,9 +47,12 @@
   line-height: normal;
 }
 
-.footer__date,
 .footer__link {
   color: #fff;
+}
+
+.footer__date {
+  color: var(--secondary-text-color, #8b8b8b);
 }
 
 .footer__link {
@@ -64,5 +67,38 @@
 @media screen and (max-width: 1024px) {
   .footer {
     padding-inline: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding-inline: 1.8rem;
+    gap: unset;
+  }
+
+  .footer__title {
+    font-size: 1.2rem;
+  }
+
+  .footer__divider {
+    margin-top: 2rem;
+  }
+
+  .footer__basement {
+    margin-top: 3rem;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .footer__links {
+    gap: 1.2rem;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .footer__date {
+    order: 2;
+    font-size: 1.2rem;
   }
 }

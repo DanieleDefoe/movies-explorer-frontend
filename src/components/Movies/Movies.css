@@ -43,3 +43,13 @@
     gap: 8rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .movies {
+    padding-top: 5rem;
+  }
+
+  .movies__grid {
+    row-gap: 1.6rem;
+  }
+}

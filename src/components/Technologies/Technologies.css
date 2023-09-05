@@ -65,3 +65,35 @@
     margin-top: 8.3rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .technologies {
+    padding-block: 7rem;
+    padding-inline: 1.8rem;
+  }
+
+  .technologies__info {
+    margin-top: 6rem;
+    margin-inline: auto;
+  }
+
+  .technologies__title,
+  .technologies__subtitle {
+    max-width: 29.2rem;
+  }
+
+  .technologies__title {
+    font-size: 3rem;
+  }
+
+  .technologies__subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    margin-top: 2.4rem;
+    max-width: 29.2rem;
+  }
+
+  .technologies__list {
+    margin-top: 5rem;
+  }
+}

@@ -11,7 +11,7 @@ import './LoginPage.css';
 
 export const LoginPage = () => {
   return (
-    <Auth title="Рады видеть">
+    <Auth title="Рады видеть!">
       <Form>
         <Fieldset>
           <Label htmlFor="email" text="E-mail" />

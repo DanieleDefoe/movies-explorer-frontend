@@ -17,3 +17,9 @@
     padding-inline: 3rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .movies-page {
+    padding-inline: 1.8rem;
+  }
+}

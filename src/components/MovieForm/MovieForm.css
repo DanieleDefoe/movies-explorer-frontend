@@ -14,3 +14,10 @@
     padding-bottom: 5rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .movie-form {
+    padding-bottom: 6.3rem;
+    gap: 3rem;
+  }
+}

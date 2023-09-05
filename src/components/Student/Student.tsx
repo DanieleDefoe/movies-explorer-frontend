@@ -35,7 +35,9 @@ export const Student = () => {
         <h4 className="student__portfolio-title">Портфолио</h4>
         <ul className="student__portfolio-list">
           {projects.map(({ title, link }, index) => (
-            <Project title={title} link={link} key={index} />
+            <li key={index}>
+              <Project title={title} link={link} />
+            </li>
           ))}
         </ul>
       </section>

@@ -36,7 +36,8 @@
   font-weight: 400;
   line-height: 1.8rem;
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   left: calc(100% + 1.4rem);
 }
 

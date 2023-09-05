@@ -37,3 +37,14 @@
 .not-found__link:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 600px) {
+  .not-found__error {
+    font-size: 8rem;
+  }
+
+  .not-found__message {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+}

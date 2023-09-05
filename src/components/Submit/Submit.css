@@ -16,3 +16,9 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+  .submit {
+    font-size: 1.2rem;
+  }
+}

@@ -3,6 +3,5 @@ export interface ProgressProps {
   color: string;
   bg: string;
   title: string;
-  maxWidth?: string;
   className?: string;
 }

@@ -90,7 +90,6 @@
   height: 4.4rem;
   background: url(../../images/burger.svg) center;
   border: none;
-  display: none;
   transition: all 0.2s linear;
 }
 
@@ -99,13 +98,28 @@
     padding-inline: 3rem;
   }
 
-  .header__burger {
-    display: block;
-  }
-
   .header__account,
   .header__movies,
   .header__saved {
     display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding-inline: 1.8rem;
+  }
+
+  .header__nav-list {
+    gap: 1.4rem;
+  }
+
+  .header__signin,
+  .header__link {
+    font-size: 1rem;
+  }
+
+  .header__signin {
+    width: 5.4rem;
   }
 }

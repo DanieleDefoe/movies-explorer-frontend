@@ -90,3 +90,34 @@
     margin-top: 9.2rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .hero {
+    padding-inline: 1rem;
+    padding-bottom: 3rem;
+    padding-top: 5rem;
+  }
+
+  .hero__image {
+    width: 21rem;
+  }
+
+  .hero__title {
+    font-size: 3rem;
+    line-height: 3.8rem;
+    letter-spacing: -1.2px;
+    max-width: 30rem;
+  }
+
+  .hero__subtitle {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 2.4rem;
+    max-width: 26rem;
+  }
+
+  .hero__link {
+    margin-top: 8rem;
+  }
+}

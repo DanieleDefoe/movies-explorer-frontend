@@ -55,3 +55,27 @@
     line-height: 1.8rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .about {
+    padding-inline: 1.8rem;
+  }
+
+  .about__info {
+    flex-direction: column;
+    padding-block: 6rem;
+    gap: 5.6rem;
+  }
+
+  .about__info-item {
+    font-size: 1.6rem;
+  }
+
+  .about__info-title {
+    font-size: 1.8rem;
+  }
+
+  .about__info-text {
+    font-size: 1.1rem;
+  }
+}

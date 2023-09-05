@@ -20,3 +20,13 @@
   text-decoration: none;
   color: var(--another-color, #4285f4);
 }
+
+@media screen and (max-width: 600px) {
+  .controls {
+    gap: 1.4rem;
+  }
+
+  .controls__question {
+    font-size: 1.2rem;
+  }
+}
