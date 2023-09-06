@@ -1,3 +1,6 @@
+# Ссылка на макет
+## [https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?node-id=1%3A9662&mode=dev](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?node-id=1%3A9662&mode=dev)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
