@@ -21,38 +21,49 @@ export const Header: FC<HeaderProps> = ({ handleMenuClick }) => {
       </Link>
       <nav className="header__nav">
         <ul className="header__nav-list">
-          <li className="header_nav-item">
-            <NavLink to={paths.signup} className="header__link">
-              Регистрация
-            </NavLink>
-          </li>
-          <li className="header_nav-item">
-            <NavLink to={paths.signin} className="header__signin">
-              Войти
-            </NavLink>
-          </li>
-          <li className="header_nav-item header__movies">
-            <NavLink to={paths.movies} className="header__link">
-              Фильмы
-            </NavLink>
-          </li>
-          <li className="header_nav-item header__saved">
-            <NavLink to={paths.saved} className="header__link">
-              Сохранённые фильмы
-            </NavLink>
-          </li>
+          {location.pathname === '/' ? (
+            <>
+              <li className="header_nav-item">
+                <NavLink to={paths.signup} className="header__link">
+                  Регистрация
+                </NavLink>
+              </li>
+              <li className="header_nav-item">
+                <NavLink to={paths.signin} className="header__signin">
+                  Войти
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="header_nav-item header__movies">
+                <NavLink to={paths.movies} className="header__link">
+                  Фильмы
+                </NavLink>
+              </li>
+              <li className="header_nav-item header__saved">
+                <NavLink to={paths.saved} className="header__link">
+                  Сохранённые фильмы
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
-        <button
-          className="header__burger"
-          onClick={handleMenuClick}
-          aria-label="бургер меню"
-        />
-        <NavLink to={paths.profile} className="header__account">
-          <p>Аккаунт</p>
-          <div className="header__account-icon">
-            <img src={images.account} alt="аккаунт" />
-          </div>
-        </NavLink>
+        {location.pathname !== '/' && (
+          <>
+            <button
+              className="header__burger"
+              onClick={handleMenuClick}
+              aria-label="бургер меню"
+            />
+            <NavLink to={paths.profile} className="header__account">
+              <p>Аккаунт</p>
+              <div className="header__account-icon">
+                <img src={images.account} alt="аккаунт" />
+              </div>
+            </NavLink>
+          </>
+        )}
       </nav>
     </header>
   );

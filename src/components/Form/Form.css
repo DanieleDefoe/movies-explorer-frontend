@@ -1,6 +1,14 @@
 .form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2.4rem;
+  height: 100%;
+}
+
+.form_type_register {
+  grid-template-rows: repeat(3, min-content);
+}
+
+.form_type_login {
+  grid-template-rows: repeat(2, min-content);
 }

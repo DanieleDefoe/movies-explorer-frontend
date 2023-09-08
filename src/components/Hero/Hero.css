@@ -91,11 +91,19 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .hero {
+    padding-top: 14rem;
+    padding-bottom: 7.6rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .hero {
     padding-inline: 1rem;
     padding-bottom: 3rem;
-    padding-top: 5rem;
+    padding-top: 7rem;
+    gap: 4.4rem;
   }
 
   .hero__image {

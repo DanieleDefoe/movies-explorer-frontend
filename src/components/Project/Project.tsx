@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import { images } from '../../images';
-
 import './Project.css';
 import { ProjectProps } from './lib/types';
 
@@ -15,7 +13,7 @@ export const Project: FC<ProjectProps> = ({ title, link }) => {
     >
       <div className="project__content">
         <h5 className="project__title">{title}</h5>
-        <img className="project__arrow" src={images.arrow} alt="стрелочка" />
+        <p className="project__arrow">↗</p>
       </div>
     </a>
   );

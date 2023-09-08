@@ -20,6 +20,6 @@
 
 @media screen and (max-width: 600px) {
   .movies-page {
-    padding-inline: 1.8rem;
+    padding-inline: 1rem;
   }
 }

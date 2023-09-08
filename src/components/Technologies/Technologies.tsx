@@ -5,7 +5,10 @@ import { technologies } from './lib/constants';
 export const Technologies = () => {
   return (
     <section className="technologies">
-      <SectionTitle text="Технологии" />
+      <SectionTitle
+        text="Технологии"
+        className="section-title__divider_type_black"
+      />
       <div className="technologies__info">
         <h3 className="technologies__title">7 технологий</h3>
         <p className="technologies__subtitle">

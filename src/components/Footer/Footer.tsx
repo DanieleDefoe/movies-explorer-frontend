@@ -15,6 +15,7 @@ export const Footer = () => {
               className="footer__link"
               href="https://practicum.yandex.ru"
               rel="noreferrer noopener nofollow"
+              target="_blank"
             >
               Яндекс Практикум
             </a>
@@ -24,6 +25,7 @@ export const Footer = () => {
               className="footer__link"
               href="https://github.com/DanieleDefoe"
               rel="noreferrer noopener nofollow"
+              target="_blank"
             >
               Github
             </a>

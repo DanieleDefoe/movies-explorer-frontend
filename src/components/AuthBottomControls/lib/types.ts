@@ -3,4 +3,5 @@ export interface AuthBottomProps {
   question: string;
   to: string;
   linkText: string;
+  isValid?: boolean;
 }

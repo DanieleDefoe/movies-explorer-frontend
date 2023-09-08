@@ -67,10 +67,11 @@
 @media screen and (max-width: 1024px) {
   .footer {
     padding-inline: 3rem;
+    padding-top: 6.5rem;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .footer {
     padding-inline: 1.8rem;
     gap: unset;

@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import hero from './hero__image.svg';
 import abuzar from './abuzar.jpg';
-import arrow from './arrow.svg';
 import placeholder from './movies-placeholder.jpg';
 import placeholderv2 from './placeholderv2.png';
 import cross from './cross.png';
@@ -13,7 +12,6 @@ export const images = {
   logo,
   hero,
   exit,
-  arrow,
   cross,
   abuzar,
   burger,

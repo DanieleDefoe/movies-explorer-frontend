@@ -3,7 +3,8 @@
   background: none;
   width: 100%;
   border-bottom: 1px solid var(--tertiary-element-color, #424242);
-  padding-block: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
   outline: none;
   color: #fff;
   font-size: 1.4rem;

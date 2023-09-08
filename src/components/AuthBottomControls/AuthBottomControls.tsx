@@ -11,10 +11,11 @@ export const AuthBottomControls: FC<AuthBottomProps> = ({
   question,
   to,
   linkText,
+  isValid,
 }) => {
   return (
     <div className="controls">
-      <Submit text={submitText} />
+      <Submit text={submitText} isValid={isValid} />
       <p className="controls__question">
         {question}{' '}
         <Link to={to} className="controls__link">

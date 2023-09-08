@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.profile-form {
+  margin-top: 12.3rem;
+}
+
 .profile-form__info {
   display: flex;
   align-items: center;
@@ -32,4 +36,10 @@
   height: 0.1rem;
   border: none;
   background: var(--tertiary-element-color, #424242);
+}
+
+@media screen and (max-width: 768px) {
+  .profile-form {
+    margin-top: 96px;
+  }
 }

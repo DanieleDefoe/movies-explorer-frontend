@@ -66,14 +66,23 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .technologies__subtitle {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    max-width: 46rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .technologies {
     padding-block: 7rem;
     padding-inline: 1.8rem;
+    background: var(--primary-bg-color, #202020);
   }
 
   .technologies__info {
-    margin-top: 6rem;
+    margin-top: 5rem;
     margin-inline: auto;
   }
 
@@ -89,11 +98,13 @@
   .technologies__subtitle {
     font-size: 1.1rem;
     line-height: 1.6rem;
-    margin-top: 2.4rem;
+    margin-top: 1rem;
     max-width: 29.2rem;
   }
 
   .technologies__list {
     margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
   }
 }

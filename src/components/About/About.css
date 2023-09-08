@@ -59,16 +59,19 @@
 @media screen and (max-width: 600px) {
   .about {
     padding-inline: 1.8rem;
+    padding-block: 7rem;
   }
 
   .about__info {
     flex-direction: column;
-    padding-block: 6rem;
-    gap: 5.6rem;
+    padding-top: 6rem;
+    padding-bottom: 5.5rem;
+    gap: 5rem;
   }
 
   .about__info-item {
     font-size: 1.6rem;
+    gap: 1.6rem;
   }
 
   .about__info-title {

@@ -22,13 +22,14 @@ export const Student = () => {
           href="https://github.com/DanieleDefoe"
           rel="noreferrer nofollow noopener"
           className="student__github"
+          target="_blank"
         >
           Github
         </a>
         <img
           src={images.abuzar}
           className="student__image"
-          alt="фотграфия Абузара Мамедова"
+          alt="фотография Абузара Мамедова"
         />
       </section>
       <section className="student__portfolio">
@@ -37,6 +38,9 @@ export const Student = () => {
           {projects.map(({ title, link }, index) => (
             <li key={index}>
               <Project title={title} link={link} />
+              {index !== projects.length - 1 && (
+                <hr className="student__portfolio-list-divider" />
+              )}
             </li>
           ))}
         </ul>

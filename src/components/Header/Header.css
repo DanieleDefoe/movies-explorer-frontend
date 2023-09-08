@@ -101,6 +101,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    padding-inline: 1.4rem;
+  }
+
   .header__burger {
     display: block;
   }
@@ -113,10 +117,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .header {
-    padding-inline: 1.8rem;
-  }
-
   .header__nav-list {
     gap: 1.4rem;
   }
@@ -128,5 +128,6 @@
 
   .header__signin {
     width: 5.4rem;
+    padding-block: 0.5rem;
   }
 }
