@@ -24,7 +24,7 @@ export const Movie: FC<MovieProps> = ({ title, duration, image, type }) => {
       <img src={image} alt="обложка фильма" className="movie__preview" />
       {type === 'saved' && (
         <button className="movie__save">
-          <img src={images.cross} alt="крестик" width="20px" />
+          <img src={images.exit} alt="крестик" width="20px" />
         </button>
       )}
       {type === 'to-save' && <button className="movie__save">Сохранить</button>}

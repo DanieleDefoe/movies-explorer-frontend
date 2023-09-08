@@ -17,6 +17,12 @@
   cursor: pointer;
 }
 
+.submit:disabled {
+  pointer-events: none;
+  background: #f8f8f8f8;
+  color: #c2c2c2;
+}
+
 @media screen and (max-width: 600px) {
   .submit {
     font-size: 1.2rem;

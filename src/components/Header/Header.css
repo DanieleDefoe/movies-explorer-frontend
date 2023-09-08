@@ -16,7 +16,7 @@
 }
 
 .header__nav,
-.header__nav-list,
+.header-list,
 .header__account,
 .header__account-icon {
   display: flex;
@@ -38,19 +38,19 @@
 }
 
 .header__account,
-.header__nav-list,
+.header-list,
 .header__account-icon {
   align-items: center;
   justify-content: center;
 }
 
-.header__nav-list {
+.header-list {
   list-style: none;
   gap: 3rem;
 }
 
-.header__link,
-.header__signin,
+.header-list__item,
+.header-list__signin,
 .header__account {
   text-decoration: none;
   font-size: 1.2rem;
@@ -59,12 +59,12 @@
   transition: all 0.2s linear;
 }
 
-.header__link,
+.header-list__item,
 .header__account {
   color: #fff;
 }
 
-.header__link:hover,
+.header-list__item:hover,
 .header__account:hover {
   opacity: 0.7;
 }
@@ -117,12 +117,12 @@
 }
 
 @media screen and (max-width: 600px) {
-  .header__nav-list {
+  .header-list {
     gap: 1.4rem;
   }
 
   .header__signin,
-  .header__link {
+  .header-list__item {
     font-size: 1rem;
   }
 

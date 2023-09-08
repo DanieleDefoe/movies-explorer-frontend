@@ -39,6 +39,7 @@ export const RegisterPage = () => {
             value={values.name || ''}
             minLength={2}
             maxLength={30}
+            placeholder="Имя"
           />
           {Boolean(errors.name) && <ErrorMessage message={errors.name} />}
         </Fieldset>
@@ -51,6 +52,7 @@ export const RegisterPage = () => {
             name="email"
             value={values.email || ''}
             minLength={5}
+            placeholder="E-mail"
           />
           {Boolean(errors.email) && <ErrorMessage message={errors.email} />}
         </Fieldset>
@@ -63,6 +65,7 @@ export const RegisterPage = () => {
             name="password"
             value={values.password || ''}
             minLength={8}
+            placeholder="Пароль"
           />
           {Boolean(errors.password) && (
             <ErrorMessage message={errors.password} />

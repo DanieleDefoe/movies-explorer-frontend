@@ -8,6 +8,8 @@ export const SearchBar = () => {
         className="search__input"
         id="search-bar"
         placeholder="Фильм"
+        required
+        minLength={1}
       />
       <button type="submit" className="search__submit">
         Поиск

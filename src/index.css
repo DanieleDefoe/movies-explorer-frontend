@@ -21,15 +21,15 @@
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Inter';
+.page {
+  font-family: 'Inter', Arial, sans-serif;
   background: var(--primary-bg-color, #202020);
   width: 100%;
   max-width: 1280px;
   margin-inline: auto;
 }
 
-#root {
+.root {
   width: 100%;
   min-height: 100vh;
   display: flex;

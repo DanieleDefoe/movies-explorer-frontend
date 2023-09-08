@@ -1,15 +1,37 @@
-import { FC } from 'react';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { FC, MouseEvent, useContext, useEffect, useRef } from 'react';
 
 import { NavLink } from 'react-router-dom';
 import './Menu.css';
 import { paths } from '../../utils';
 import { images } from '../../images';
-import { MenuProps } from './lib/types';
+import { MenuContext } from '../../contexts';
 
-export const Menu: FC<MenuProps> = ({ isMenuOpen, handleExitClick }) => {
+export const Menu: FC = () => {
+  const { isMenuOpen, handleExitClick } = useContext(MenuContext);
+  const menuRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    menuRef.current?.focus();
+  }, []);
+
+  function handleOverlayClick(event: MouseEvent<HTMLDivElement>) {
+    if (event.target === event.currentTarget) {
+      handleExitClick!();
+    }
+  }
+
   return (
-    <div className={`menu-wrapper ${isMenuOpen ? 'menu-wrapper_active' : ''}`}>
-      <section className={`menu ${isMenuOpen ? 'menu_active' : ''}`}>
+    <div
+      className={`menu-wrapper ${isMenuOpen ? 'menu-wrapper_active' : ''}`}
+      onClick={handleOverlayClick}
+    >
+      <section
+        className={`menu ${isMenuOpen ? 'menu_active' : ''}`}
+        ref={menuRef}
+      >
         <button
           className="menu__exit"
           onClick={handleExitClick}

@@ -25,7 +25,7 @@ export const About = () => {
           </p>
         </article>
       </div>
-      <div className="about__progresses">
+      <div className="progresses">
         <Progress
           percentage="1 неделя"
           color="#000"

@@ -17,6 +17,10 @@
   cursor: pointer;
 }
 
+.search:focus-within {
+  border: 1px solid #4285f4;
+}
+
 .search__input {
   width: 100%;
   border: none;

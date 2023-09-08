@@ -7,7 +7,7 @@ export const Technologies = () => {
     <section className="technologies">
       <SectionTitle
         text="Технологии"
-        className="section-title__divider_type_black"
+        className="title-container__divider_type_black"
       />
       <div className="technologies__info">
         <h3 className="technologies__title">7 технологий</h3>

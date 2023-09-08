@@ -13,7 +13,7 @@ export const Progress: FC<ProgressProps> = ({
 }) => {
   return (
     <div className={`progress ${className ? className : ''}`}>
-      <p className="progress_percentage" style={{ color, background: bg }}>
+      <p className="progress__percentage" style={{ color, background: bg }}>
         {percentage}
       </p>
       <p className="progress__title">{title}</p>

@@ -7,7 +7,7 @@
   padding-block: 7rem;
 }
 
-.profile-form__buttons {
+.profile__buttons {
   gap: 1.6rem;
   text-align: center;
   display: flex;
@@ -17,8 +17,8 @@
   margin-top: 22rem;
 }
 
-.profile-form__edit,
-.profile-form__signout {
+.profile__edit,
+.profile__signout {
   font-size: 1.3rem;
   line-height: normal;
   border: none;
@@ -26,24 +26,24 @@
   transition: all 0.2s linear;
 }
 
-.profile-form__edit {
+.profile__edit {
   font-weight: 400;
   color: #fff;
 }
 
-.profile-form__signout {
+.profile__signout {
   color: #ee3465;
   font-weight: 500;
 }
 
-.profile-form__edit:hover,
-.profile-form__signout:hover {
+.profile__edit:hover,
+.profile__signout:hover {
   opacity: 0.7;
   cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-  .profile-form__buttons {
+  .profile__buttons {
     margin-top: 21rem;
   }
 }

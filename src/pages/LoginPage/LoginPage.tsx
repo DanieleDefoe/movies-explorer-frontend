@@ -33,8 +33,9 @@ export const LoginPage = () => {
             id="email"
             name="email"
             onChange={handleChange}
-            value={values.email}
+            value={values.email || ''}
             minLength={5}
+            placeholder="E-mail"
           />
           {Boolean(errors.email) && <ErrorMessage message={errors.email} />}
         </Fieldset>
@@ -45,8 +46,9 @@ export const LoginPage = () => {
             id="password"
             name="password"
             onChange={handleChange}
-            value={values.password}
+            value={values.password || ''}
             minLength={8}
+            placeholder="Пароль"
           />
           {Boolean(errors.password) && (
             <ErrorMessage message={errors.password} />

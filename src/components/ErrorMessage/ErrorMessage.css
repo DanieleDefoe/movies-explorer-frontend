@@ -5,3 +5,9 @@
   line-height: normal;
   margin-top: 0.6rem;
 }
+
+.error-message_type_profile {
+  display: block;
+  width: 100%;
+  text-align: end;
+}
