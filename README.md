@@ -1,6 +1,12 @@
 # Ссылка на макет
 ## [https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?node-id=1%3A9662&mode=dev](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?node-id=1%3A9662&mode=dev)
 
+## Ссылка на Pull Request (Main <-- Level-3)
+### [https://github.com/DanieleDefoe/movies-explorer-frontend/pull/5](https://github.com/DanieleDefoe/movies-explorer-frontend/pull/5)
+
+## Ссылка на деплой
+### [https://abuzar.nomoredomainsicu.ru/](https://abuzar.nomoredomainsicu.ru/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
