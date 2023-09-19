@@ -1,10 +1,14 @@
+import { BackendMovie, Movie } from '../../../utils';
+
 export interface MovieProps {
-  title: string;
-  duration: number;
-  image: string;
   type?: 'to-save' | 'saved';
+  lang?: 'en' | 'ru';
+  movie: Movie | BackendMovie;
 }
 
 export interface MoviesProps {
-  movies: Array<MovieProps>;
+  movies: Array<Movie | BackendMovie>;
+  type?: 'to-save' | 'saved';
+  isLoading?: boolean | null;
+  lang?: 'en' | 'ru' | undefined;
 }

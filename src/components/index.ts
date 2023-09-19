@@ -27,3 +27,4 @@ export * from './ProfileForm';
 export * from './ProfileData';
 export * from './Menu';
 export * from './ErrorMessage';
+export * from './Popup';

@@ -6,3 +6,9 @@ export const paths = {
   signin: '/signin',
   signup: '/signup',
 };
+
+export const NAME_REGEX = /^[a-zа-я\s-]+$/g;
+
+export const MOVIES_BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+export const AUTH_BASE_URL = 'https://api.abuzar.nomoredomainsicu.ru';
+export const PRACTICUM_URL = 'https://api.nomoreparties.co/';

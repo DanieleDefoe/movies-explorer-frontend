@@ -50,6 +50,11 @@
   transition: all 0.2s linear;
 }
 
+.search__submit:disabled {
+  pointer-events: none;
+  background: #4285f450;
+}
+
 .search__submit:hover {
   cursor: pointer;
   opacity: 0.8;

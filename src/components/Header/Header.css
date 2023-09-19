@@ -59,6 +59,10 @@
   transition: all 0.2s linear;
 }
 
+.header-list__item {
+  font-weight: 400;
+}
+
 .header-list__item,
 .header__account {
   color: #fff;
@@ -83,6 +87,10 @@
   padding-block: 0.8rem;
   display: block;
   text-align: center;
+}
+
+.header-list__item_active {
+  font-weight: 500;
 }
 
 .header__burger {

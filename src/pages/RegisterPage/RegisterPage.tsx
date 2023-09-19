@@ -10,13 +10,46 @@ import {
   Label,
 } from '../../components';
 import { useValidation } from '../../hooks';
-import { FormEvent, useEffect } from 'react';
+import { FormEvent, useEffect, useContext } from 'react';
+import { DataContext, DataContextValues } from '../../contexts';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const RegisterPage = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const {
+    signup,
+    isSearchLoading,
+    isLoggedIn,
+    setPopupMessage,
+    setPopupOpen,
+    setPopupType,
+  } = useContext(DataContext) as DataContextValues;
+
   const { values, errors, isValid, handleChange, resetForm } = useValidation();
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate(searchParams.get('redirectTo') || paths.root, {
+        replace: true,
+      });
+    }
+  }, [isLoggedIn]);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    try {
+      const { name, email, password } = values;
+      const res = await signup(name, email, password);
+      if (res) {
+        setPopupType('success');
+        setPopupMessage('Вы успешно зарегистрировались!');
+        setPopupOpen(true);
+        navigate(paths.signin, { replace: true });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   useEffect(() => {
@@ -52,6 +85,7 @@ export const RegisterPage = () => {
             name="email"
             value={values.email || ''}
             minLength={5}
+            maxLength={50}
             placeholder="E-mail"
           />
           {Boolean(errors.email) && <ErrorMessage message={errors.email} />}
@@ -76,7 +110,7 @@ export const RegisterPage = () => {
           question="Уже зарегистрированы?"
           to={paths.signin}
           linkText="Войти"
-          isValid={isValid}
+          isValid={isValid && !isSearchLoading}
         />
       </Form>
     </Auth>

@@ -30,5 +30,7 @@ export function useValidation() {
     isValid,
     handleChange,
     resetForm,
+    setErrors,
+    setIsValid,
   };
 }

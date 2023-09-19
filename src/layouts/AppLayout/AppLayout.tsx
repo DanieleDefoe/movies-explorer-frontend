@@ -2,10 +2,9 @@ import { CSSProperties } from 'react';
 
 import { Outlet, useLocation } from 'react-router-dom';
 
-import { Header, Main, Footer } from '../../components';
+import { Header, Main, Footer, Menu } from '../../components';
 
 import './AppLayout.css';
-import { MenuContextProvider } from '../../contexts';
 
 export const AppLayout = () => {
   const location = useLocation();
@@ -15,7 +14,8 @@ export const AppLayout = () => {
   };
 
   return (
-    <MenuContextProvider>
+    <>
+      <Menu />
       <div className="layout" style={styles}>
         <Header />
         <Main>
@@ -23,6 +23,6 @@ export const AppLayout = () => {
         </Main>
         {location.pathname !== '/profile' && <Footer />}
       </div>
-    </MenuContextProvider>
+    </>
   );
 };

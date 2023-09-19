@@ -10,17 +10,48 @@ import {
 } from '../../components';
 import './LoginPage.css';
 import { useValidation } from 'src/hooks';
-import { FormEvent, useEffect } from 'react';
+import { FormEvent, useEffect, useContext } from 'react';
+import { DataContext, DataContextValues } from '../../contexts';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const {
+    signin,
+    isSearchLoading,
+    isLoggedIn,
+    setPopupOpen,
+    setPopupMessage,
+    setPopupType,
+  } = useContext(DataContext) as DataContextValues;
   const { values, errors, isValid, resetForm, handleChange } = useValidation();
 
   useEffect(() => {
+    if (isLoggedIn) {
+      navigate(searchParams.get('redirectTo') || paths.root, {
+        replace: true,
+      });
+    }
     resetForm({ email: '', password: '' }, { email: '', password: '' });
-  }, [resetForm]);
+  }, [resetForm, isLoggedIn]);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const { email, password } = values;
+    try {
+      const data = await signin(email, password);
+      if (data?._id) {
+        setPopupType('success');
+        setPopupMessage('Успешных вход в аккаунт');
+        setPopupOpen(true);
+        navigate(searchParams.get('redirectTo') || paths.movies, {
+          replace: true,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -35,6 +66,7 @@ export const LoginPage = () => {
             onChange={handleChange}
             value={values.email || ''}
             minLength={5}
+            maxLength={50}
             placeholder="E-mail"
           />
           {Boolean(errors.email) && <ErrorMessage message={errors.email} />}
@@ -48,6 +80,7 @@ export const LoginPage = () => {
             onChange={handleChange}
             value={values.password || ''}
             minLength={8}
+            maxLength={30}
             placeholder="Пароль"
           />
           {Boolean(errors.password) && (
@@ -59,7 +92,7 @@ export const LoginPage = () => {
           question="Ещё не зарегистрированы?"
           to={paths.signup}
           linkText="Регистрация"
-          isValid={isValid}
+          isValid={isValid && !isSearchLoading}
         />
       </Form>
     </Auth>
