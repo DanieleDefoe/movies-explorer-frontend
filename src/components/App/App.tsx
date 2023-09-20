@@ -86,7 +86,9 @@ const routes = createRoutesFromElements(
 const router = createBrowserRouter(routes);
 
 export const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+    () => JSON.parse(localStorage.getItem('loggedIn') as string) || false,
+  );
   const [isSearchLoading, setIsSearchLoading] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
@@ -155,12 +157,14 @@ export const App = () => {
       const res = await auth.getContent();
       const data = await checkResponse(res);
       if (data) {
+        localStorage.setItem('loggedIn', JSON.stringify(true));
         handleLogin();
         setCurrentUser({ ...data, id: data._id });
       } else {
         handleLogout();
       }
     } catch (error) {
+      localStorage.setItem('loggedIn', JSON.stringify(false));
       const { message } = (await error) as any;
       setPopupType('error');
       setPopupMessage(message);
@@ -206,6 +210,7 @@ export const App = () => {
       setIsSearchLoading(true);
       const res = await auth.register(name, email, password);
       await checkResponse(res);
+      await authorizeUser(email, password);
       return res.ok;
     } catch (err) {
       const { message } = (await err) as any;
@@ -251,6 +256,7 @@ export const App = () => {
       isSearchLoading={isSearchLoading}
       updateUserData={updateUserData}
       savedMovies={savedMovies}
+      setSavedMovies={setSavedMovies}
       fetchSavedMovies={fetchSavedMovies}
       setPopupOpen={setPopupOpen}
       setPopupType={setPopupType}

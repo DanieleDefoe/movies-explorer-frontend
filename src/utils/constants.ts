@@ -8,6 +8,7 @@ export const paths = {
 };
 
 export const NAME_REGEX = /^[a-zа-я\s-]+$/g;
+export const EMAIL_REGEX = /^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,}$/;
 
 export const MOVIES_BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const AUTH_BASE_URL = 'https://api.abuzar.nomoredomainsicu.ru';

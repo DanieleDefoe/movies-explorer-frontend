@@ -15,6 +15,7 @@ export interface DataContextValues {
   isSearchLoading: boolean;
   updateUserData(name: string, email: string): any;
   savedMovies: Array<BackendMovie>;
+  setSavedMovies: Dispatch<SetStateAction<Array<BackendMovie>>>;
   fetchSavedMovies(): any;
   setPopupType: Dispatch<SetStateAction<'error' | 'success' | undefined>>;
   setPopupOpen: Dispatch<SetStateAction<boolean>>;

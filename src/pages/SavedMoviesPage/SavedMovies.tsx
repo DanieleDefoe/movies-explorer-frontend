@@ -21,13 +21,13 @@ export const SavedMovies = () => {
   const [movies, setMovies] = useState<Array<BackendMovie>>(
     () => JSON.parse(localStorage.getItem('saved-movies') as string) || [],
   );
+  const [unfilteredMovies, setUnfilteredMovies] =
+    useState<Array<BackendMovie>>(savedMovies);
   const [moviesLoading, setMoviesLoading] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const currentLocation = location.pathname;
-
     if (!isLoggedIn) {
-      return navigate(`${paths.signin}?redirectTo=${currentLocation}`, {
+      return navigate(paths.root, {
         replace: true,
       });
     }
@@ -39,13 +39,14 @@ export const SavedMovies = () => {
     }
 
     setMovies(structuredClone(savedMovies));
+    setUnfilteredMovies(savedMovies);
   }, [savedMovies]);
 
   useEffect(() => {
     if (checked) {
-      setMovies(savedMovies.filter((el) => el.duration <= 40));
+      setMovies(unfilteredMovies.filter((el) => el.duration <= 40));
     } else {
-      setMovies(savedMovies);
+      setMovies(unfilteredMovies);
     }
   }, [checked]);
 
@@ -57,25 +58,25 @@ export const SavedMovies = () => {
     }
     try {
       setMoviesLoading(true);
-      setMovies(
-        savedMovies.filter((el) => {
-          if (checked) {
-            if (el.duration > 40) {
-              return false;
-            } else if (lang === 'en') {
-              return el.nameEN.toLowerCase().includes(query.toLowerCase());
-            } else {
-              return el.nameRU.toLowerCase().includes(query.toLowerCase());
-            }
+      const data = savedMovies.filter((el) => {
+        if (checked) {
+          if (el.duration > 40) {
+            return false;
+          } else if (lang === 'en') {
+            return el.nameEN.toLowerCase().includes(query.toLowerCase());
           } else {
-            if (lang === 'en') {
-              return el.nameEN.toLowerCase().includes(query.toLowerCase());
-            } else {
-              return el.nameRU.toLowerCase().includes(query.toLowerCase());
-            }
+            return el.nameRU.toLowerCase().includes(query.toLowerCase());
           }
-        }),
-      );
+        } else {
+          if (lang === 'en') {
+            return el.nameEN.toLowerCase().includes(query.toLowerCase());
+          } else {
+            return el.nameRU.toLowerCase().includes(query.toLowerCase());
+          }
+        }
+      });
+      setMovies(data);
+      setUnfilteredMovies(data);
     } catch (err: any) {
       const { message } = await err;
       setPopupType('error');

@@ -1,4 +1,4 @@
-import { paths } from '../../utils';
+import { EMAIL_REGEX, paths } from '../../utils';
 import {
   Auth,
   AuthBottomControls,
@@ -29,7 +29,7 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate(searchParams.get('redirectTo') || paths.root, {
+      navigate(paths.movies, {
         replace: true,
       });
     }
@@ -39,6 +39,7 @@ export const LoginPage = () => {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const { email, password } = values;
+
     try {
       const data = await signin(email, password);
       if (data?._id) {
@@ -92,7 +93,9 @@ export const LoginPage = () => {
           question="Ещё не зарегистрированы?"
           to={paths.signup}
           linkText="Регистрация"
-          isValid={isValid && !isSearchLoading}
+          isValid={
+            isValid && !isSearchLoading && EMAIL_REGEX.test(values.email)
+          }
         />
       </Form>
     </Auth>

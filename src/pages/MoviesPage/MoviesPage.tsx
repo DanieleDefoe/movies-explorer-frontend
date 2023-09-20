@@ -3,12 +3,11 @@ import { MovieForm, Movies } from '../../components';
 import { useContext, useEffect, useState } from 'react';
 import './MoviesPage.css';
 import { Movie, checkResponse, paths } from '../../utils';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getAllMovies } from '../../utils';
 
 export const MoviesPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { isLoggedIn, setPopupOpen, setPopupType, setPopupMessage } =
     useContext(DataContext) as DataContextValues;
   const [checked, setChecked] = useState<boolean>(
@@ -27,22 +26,28 @@ export const MoviesPage = () => {
   }, []);
 
   useEffect(() => {
-    const currentPath = location.pathname;
-
     if (!isLoggedIn) {
-      return navigate(`${paths.signin}?redirectTo=${currentPath}`, {
+      return navigate(paths.root, {
         replace: true,
       });
     }
   }, [isLoggedIn]);
 
   useEffect(() => {
+    const moviesFromLocal = localStorage.getItem('movies');
+
+    if (moviesFromLocal) {
+      const cachedMovies = JSON.parse(moviesFromLocal) as Array<Movie>;
+
+      if (checked) {
+        setMovies(cachedMovies.filter((el) => el.duration <= 40));
+      } else {
+        setMovies(cachedMovies);
+      }
+    }
+
     localStorage.setItem('shorts', JSON.stringify(checked));
   }, [checked]);
-
-  useEffect(() => {
-    localStorage.setItem('movies', JSON.stringify(movies));
-  }, [movies]);
 
   async function getMovies(query: string) {
     if (/[a-z]+/i.test(query)) {
@@ -54,26 +59,25 @@ export const MoviesPage = () => {
       setMoviesLoading(true);
       const res = await getAllMovies();
       const data = (await checkResponse(res)) as Array<Movie>;
-      setMovies(
-        data.filter((el) => {
-          if (checked) {
-            if (el.duration > 40) {
-              return false;
-            } else if (lang === 'en') {
-              return el.nameEN.toLowerCase().includes(query.toLowerCase());
-            } else {
-              return el.nameRU.toLowerCase().includes(query.toLowerCase());
-            }
+      const displayedMovies = data.filter((el) => {
+        if (checked) {
+          if (el.duration > 40) {
+            return false;
+          } else if (lang === 'en') {
+            return el.nameEN.toLowerCase().includes(query.toLowerCase());
           } else {
-            if (lang === 'en') {
-              return el.nameEN.toLowerCase().includes(query.toLowerCase());
-            } else {
-              return el.nameRU.toLowerCase().includes(query.toLowerCase());
-            }
+            return el.nameRU.toLowerCase().includes(query.toLowerCase());
           }
-        }),
-      );
-      localStorage.setItem('movies', JSON.stringify(data));
+        } else {
+          if (lang === 'en') {
+            return el.nameEN.toLowerCase().includes(query.toLowerCase());
+          } else {
+            return el.nameRU.toLowerCase().includes(query.toLowerCase());
+          }
+        }
+      });
+      setMovies(displayedMovies);
+      localStorage.setItem('movies', JSON.stringify(displayedMovies));
     } catch (err: any) {
       const { message } = await err;
       setPopupType('error');

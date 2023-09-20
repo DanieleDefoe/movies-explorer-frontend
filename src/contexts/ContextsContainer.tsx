@@ -22,6 +22,7 @@ export const ContextsContainer: FC<ContextProviderProps> = ({
   setPopupMessage,
   setPopupOpen,
   setPopupType,
+  setSavedMovies,
 }) => {
   return (
     <CurrentUserContext.Provider value={user}>
@@ -38,6 +39,7 @@ export const ContextsContainer: FC<ContextProviderProps> = ({
           setPopupMessage,
           setPopupOpen,
           setPopupType,
+          setSavedMovies,
         }}
       >
         <MenuContext.Provider

@@ -27,8 +27,9 @@
 
 .not-found__link {
   color: #4285f4;
+  background: none;
+  border: none;
   font-size: 1.4rem;
-  text-decoration: none;
   transition: all 0.2s linear;
   position: absolute;
   bottom: 6rem;
@@ -36,6 +37,7 @@
 
 .not-found__link:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

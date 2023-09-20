@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { FC, useContext, useState } from 'react';
 import './Movie.css';
 import { MovieProps } from '../Movies/lib/types';
@@ -8,6 +9,7 @@ import {
   PRACTICUM_URL,
   User,
   BackendMovie,
+  Movie as MovieType,
 } from '../../utils';
 import {
   CurrentUserContext,
@@ -16,7 +18,7 @@ import {
 } from '../../contexts';
 
 export const Movie: FC<MovieProps> = ({ type, movie, lang }) => {
-  const { savedMovies, fetchSavedMovies } = useContext(
+  const { savedMovies, setSavedMovies } = useContext(
     DataContext,
   ) as DataContextValues;
   const user = useContext(CurrentUserContext) as User;
@@ -63,8 +65,8 @@ export const Movie: FC<MovieProps> = ({ type, movie, lang }) => {
         nameEN: movie.nameEN,
         image: isSavedMovie(movie) ? '' : `${PRACTICUM_URL}${movie.image.url}`,
       });
-      await checkResponse(res);
-      await fetchSavedMovies();
+      const movieToSave = await checkResponse(res);
+      setSavedMovies((prevSavedMovies) => [...prevSavedMovies, movieToSave]);
     } catch (err) {
       console.log(err);
     } finally {
@@ -75,9 +77,19 @@ export const Movie: FC<MovieProps> = ({ type, movie, lang }) => {
   async function handleRemove() {
     try {
       setSaving(true);
-      const res = await removeMovie(isSavedMovie(movie) ? movie.movieId : '');
+      const res = await removeMovie(
+        isSavedMovie(movie) ? movie.movieId : String(movie.id),
+      );
       await checkResponse(res);
-      await fetchSavedMovies();
+      if (isSavedMovie(movie)) {
+        setSavedMovies((prevSavedMovies) =>
+          prevSavedMovies.filter((el) => el.movieId !== movie.movieId),
+        );
+      } else {
+        setSavedMovies((prevSavedMovies) =>
+          prevSavedMovies.filter((el) => el.movieId !== String(movie.id)),
+        );
+      }
     } catch (err) {
       console.log(err);
     } finally {

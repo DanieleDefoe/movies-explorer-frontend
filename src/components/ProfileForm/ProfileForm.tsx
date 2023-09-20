@@ -7,7 +7,7 @@ import {
   DataContext,
   DataContextValues,
 } from '../../contexts';
-import { User } from '../../utils';
+import { EMAIL_REGEX, User } from '../../utils';
 
 export const ProfileForm: FC<ProfileFormProps> = ({
   isEditing,
@@ -16,6 +16,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   startEditing,
   handleSignoutClick,
 }) => {
+  const user = useContext(CurrentUserContext) as User;
   const { updateUserData, isSearchLoading } = useContext(
     DataContext,
   ) as DataContextValues;
@@ -98,7 +99,12 @@ export const ProfileForm: FC<ProfileFormProps> = ({
         {isEditing ? (
           <Submit
             text="сохранить"
-            isValid={validation.isValid && !isSearchLoading}
+            isValid={
+              validation.isValid &&
+              !isSearchLoading &&
+              (values.email !== user.email || values.name !== user.name) &&
+              EMAIL_REGEX.test(values.email)
+            }
           />
         ) : (
           <>

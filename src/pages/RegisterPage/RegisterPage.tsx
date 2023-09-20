@@ -1,5 +1,5 @@
 import './RegisterPage.css';
-import { paths } from '../../utils';
+import { EMAIL_REGEX, paths } from '../../utils';
 import {
   Auth,
   AuthBottomControls,
@@ -16,7 +16,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const {
     signup,
     isSearchLoading,
@@ -30,7 +29,7 @@ export const RegisterPage = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate(searchParams.get('redirectTo') || paths.root, {
+      navigate(paths.movies, {
         replace: true,
       });
     }
@@ -45,7 +44,7 @@ export const RegisterPage = () => {
         setPopupType('success');
         setPopupMessage('Вы успешно зарегистрировались!');
         setPopupOpen(true);
-        navigate(paths.signin, { replace: true });
+        navigate(paths.movies, { replace: true });
       }
     } catch (err) {
       console.log(err);
@@ -110,7 +109,9 @@ export const RegisterPage = () => {
           question="Уже зарегистрированы?"
           to={paths.signin}
           linkText="Войти"
-          isValid={isValid && !isSearchLoading}
+          isValid={
+            isValid && !isSearchLoading && EMAIL_REGEX.test(values.email)
+          }
         />
       </Form>
     </Auth>
