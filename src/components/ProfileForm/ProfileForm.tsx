@@ -7,7 +7,7 @@ import {
   DataContext,
   DataContextValues,
 } from '../../contexts';
-import { EMAIL_REGEX, User } from '../../utils';
+import { User } from '../../utils';
 
 export const ProfileForm: FC<ProfileFormProps> = ({
   isEditing,
@@ -32,11 +32,12 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      await updateUserData(values.name, values.email);
+      const result = await updateUserData(values.name, values.email);
+      if (result) {
+        stopEditing();
+      }
     } catch (err) {
       console.log(err);
-    } finally {
-      stopEditing();
     }
   }
 

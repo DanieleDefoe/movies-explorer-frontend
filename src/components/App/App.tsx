@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BackendMovie, User, auth, getSavedMovies, paths } from '../../utils';
@@ -114,8 +115,6 @@ export const App = () => {
       window.removeEventListener('keyup', handleEscapeClick);
     };
   }, [popupOpen]);
-
-  console.log(popupOpen);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -237,6 +236,7 @@ export const App = () => {
       setPopupType('success');
       setPopupMessage('Данные успешно обновлены');
       setPopupOpen(true);
+      return true;
     } catch (err) {
       const { message } = (await err) as any;
       setPopupType('error');
@@ -244,6 +244,7 @@ export const App = () => {
         'Пользователь с таким email уже зарегистрирован или ' + message,
       );
       setPopupOpen(true);
+      return false;
     } finally {
       setIsSearchLoading(false);
     }
