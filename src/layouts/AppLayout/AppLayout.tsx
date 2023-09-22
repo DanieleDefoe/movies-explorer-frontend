@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 
 import { Outlet, useLocation } from 'react-router-dom';
 
-import { Header, Main, Footer, Menu } from '../../components';
+import { Header, Main, Footer } from '../../components';
 
 import './AppLayout.css';
 
@@ -15,7 +15,6 @@ export const AppLayout = () => {
 
   return (
     <>
-      <Menu />
       <div className="layout" style={styles}>
         <Header />
         <Main>

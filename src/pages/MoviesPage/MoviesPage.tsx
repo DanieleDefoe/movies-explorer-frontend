@@ -2,7 +2,7 @@ import { DataContext, DataContextValues } from '../../contexts';
 import { MovieForm, Movies } from '../../components';
 import { useContext, useEffect, useState } from 'react';
 import './MoviesPage.css';
-import { Movie, checkResponse, paths } from '../../utils';
+import { Movie, checkResponse, compareStrings, paths } from '../../utils';
 import { useNavigate } from 'react-router-dom';
 import { getAllMovies } from '../../utils';
 
@@ -13,10 +13,9 @@ export const MoviesPage = () => {
   const [checked, setChecked] = useState<boolean>(
     () => JSON.parse(localStorage.getItem('shorts') as string) || false,
   );
-  const [lang, setLang] = useState<'en' | 'ru'>();
   const [moviesLoading, setMoviesLoading] = useState<boolean | null>(null);
   const [movies, setMovies] = useState<Array<Movie>>(
-    () => JSON.parse(localStorage.getItem('movies') as string) || [],
+    () => JSON.parse(localStorage.getItem('displayed-movies') as string) || [],
   );
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export const MoviesPage = () => {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    const moviesFromLocal = localStorage.getItem('movies');
+    const moviesFromLocal = localStorage.getItem('displayed-movies');
 
     if (moviesFromLocal) {
       const cachedMovies = JSON.parse(moviesFromLocal) as Array<Movie>;
@@ -42,6 +41,7 @@ export const MoviesPage = () => {
       if (checked) {
         setMovies(cachedMovies.filter((el) => el.duration <= 40));
       } else {
+        getMovies(localStorage.getItem('movies-query') as string);
         setMovies(cachedMovies);
       }
     }
@@ -50,34 +50,28 @@ export const MoviesPage = () => {
   }, [checked]);
 
   async function getMovies(query: string) {
-    if (/[a-z]+/i.test(query)) {
-      setLang('en');
-    } else {
-      setLang('ru');
-    }
     try {
       setMoviesLoading(true);
-      const res = await getAllMovies();
-      const data = (await checkResponse(res)) as Array<Movie>;
+      let data = JSON.parse(
+        localStorage.getItem('movies') as string,
+      ) as Array<Movie>;
+      if (!data) {
+        const res = await getAllMovies();
+        data = (await checkResponse(res)) as Array<Movie>;
+        localStorage.setItem('movies', JSON.stringify(data));
+      }
+
       const displayedMovies = data.filter((el) => {
-        if (checked) {
-          if (el.duration > 40) {
-            return false;
-          } else if (lang === 'en') {
-            return el.nameEN.toLowerCase().includes(query.toLowerCase());
-          } else {
-            return el.nameRU.toLowerCase().includes(query.toLowerCase());
-          }
-        } else {
-          if (lang === 'en') {
-            return el.nameEN.toLowerCase().includes(query.toLowerCase());
-          } else {
-            return el.nameRU.toLowerCase().includes(query.toLowerCase());
-          }
-        }
+        return (
+          compareStrings(el.nameRU, query) || compareStrings(el.nameEN, query)
+        );
       });
-      setMovies(displayedMovies);
-      localStorage.setItem('movies', JSON.stringify(displayedMovies));
+      setMovies(
+        checked
+          ? displayedMovies.filter((el) => el.duration <= 40)
+          : displayedMovies,
+      );
+      localStorage.setItem('displayed-movies', JSON.stringify(displayedMovies));
     } catch (err: any) {
       const { message } = await err;
       setPopupType('error');
@@ -97,12 +91,7 @@ export const MoviesPage = () => {
         setChecked={setChecked}
         isLoading={moviesLoading}
       />
-      <Movies
-        movies={movies}
-        type="to-save"
-        isLoading={moviesLoading}
-        lang={lang}
-      />
+      <Movies movies={movies} type="to-save" isLoading={moviesLoading} />
     </section>
   );
 };

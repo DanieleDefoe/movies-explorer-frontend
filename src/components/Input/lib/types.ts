@@ -9,4 +9,5 @@ export interface InputProps {
   onChange?(event: ChangeEvent<HTMLInputElement>): void;
   minLength?: number;
   maxLength?: number;
+  pattern?: string;
 }

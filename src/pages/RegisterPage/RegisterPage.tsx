@@ -80,6 +80,7 @@ export const RegisterPage = () => {
           <Input
             onChange={handleChange}
             type="email"
+            pattern="^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,}$"
             id="email"
             name="email"
             value={values.email || ''}
@@ -109,9 +110,7 @@ export const RegisterPage = () => {
           question="Уже зарегистрированы?"
           to={paths.signin}
           linkText="Войти"
-          isValid={
-            isValid && !isSearchLoading && EMAIL_REGEX.test(values.email)
-          }
+          isValid={isValid && !isSearchLoading}
         />
       </Form>
     </Auth>

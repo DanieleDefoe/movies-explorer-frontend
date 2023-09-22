@@ -3,7 +3,6 @@ import { FC } from 'react';
 import { CurrentUserContext } from './CurrentUserContext';
 import { ContextProviderProps } from './lib/types';
 import { DataContext } from './DataContext';
-import { MenuContext } from './MenuContext';
 
 export const ContextsContainer: FC<ContextProviderProps> = ({
   children,
@@ -12,9 +11,6 @@ export const ContextsContainer: FC<ContextProviderProps> = ({
   signout,
   isLoggedIn,
   user,
-  isMenuOpen,
-  handleExitClick,
-  handleMenuClick,
   isSearchLoading,
   updateUserData,
   savedMovies,
@@ -42,11 +38,7 @@ export const ContextsContainer: FC<ContextProviderProps> = ({
           setSavedMovies,
         }}
       >
-        <MenuContext.Provider
-          value={{ isMenuOpen, handleExitClick, handleMenuClick }}
-        >
-          {children}
-        </MenuContext.Provider>
+        {children}
       </DataContext.Provider>
     </CurrentUserContext.Provider>
   );

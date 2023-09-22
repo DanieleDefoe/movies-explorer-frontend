@@ -38,8 +38,24 @@ export const SavedMovies = () => {
       setMoviesLoading(false);
     }
 
-    setMovies(structuredClone(savedMovies));
-    setUnfilteredMovies(savedMovies);
+    setMovies((prevMovies) =>
+      prevMovies.length === 0
+        ? savedMovies
+        : savedMovies.filter(
+            (el) =>
+              prevMovies.findIndex((m) => m.movieId === el.movieId) !== -1,
+          ),
+    );
+    setUnfilteredMovies((prevUnfilteredMovies) =>
+      prevUnfilteredMovies.length === 0
+        ? savedMovies
+        : savedMovies.filter(
+            (el) =>
+              prevUnfilteredMovies.findIndex(
+                (m) => m.movieId === el.movieId,
+              ) !== -1,
+          ),
+    );
   }, [savedMovies]);
 
   useEffect(() => {
@@ -51,6 +67,7 @@ export const SavedMovies = () => {
   }, [checked]);
 
   async function getMovies(query: string) {
+    const lowerQuery = query.toLowerCase();
     if (/[a-z]+/i.test(query)) {
       setLang('en');
     } else {
@@ -60,19 +77,16 @@ export const SavedMovies = () => {
       setMoviesLoading(true);
       const data = savedMovies.filter((el) => {
         if (checked) {
-          if (el.duration > 40) {
-            return false;
-          } else if (lang === 'en') {
-            return el.nameEN.toLowerCase().includes(query.toLowerCase());
-          } else {
-            return el.nameRU.toLowerCase().includes(query.toLowerCase());
-          }
+          return (
+            el.duration <= 40 &&
+            (el.nameEN.toLowerCase().includes(lowerQuery) ||
+              el.nameRU.toLowerCase().includes(lowerQuery))
+          );
         } else {
-          if (lang === 'en') {
-            return el.nameEN.toLowerCase().includes(query.toLowerCase());
-          } else {
-            return el.nameRU.toLowerCase().includes(query.toLowerCase());
-          }
+          return (
+            el.nameEN.toLowerCase().includes(lowerQuery) ||
+            el.nameRU.toLowerCase().includes(lowerQuery)
+          );
         }
       });
       setMovies(data);
@@ -97,9 +111,9 @@ export const SavedMovies = () => {
       />
       <Movies
         movies={movies}
+        setMovies={setMovies}
         type="saved"
         isLoading={moviesLoading}
-        lang={lang}
       />
     </section>
   );

@@ -9,7 +9,6 @@ import {
   PRACTICUM_URL,
   User,
   BackendMovie,
-  Movie as MovieType,
 } from '../../utils';
 import {
   CurrentUserContext,
@@ -17,7 +16,7 @@ import {
   DataContextValues,
 } from '../../contexts';
 
-export const Movie: FC<MovieProps> = ({ type, movie, lang }) => {
+export const Movie: FC<MovieProps> = ({ type, movie }) => {
   const { savedMovies, setSavedMovies } = useContext(
     DataContext,
   ) as DataContextValues;
@@ -100,9 +99,7 @@ export const Movie: FC<MovieProps> = ({ type, movie, lang }) => {
   return (
     <article className="movie">
       <div className="movie__info">
-        <h4 className="movie__title">
-          {lang === 'en' ? movie.nameEN : movie.nameRU}
-        </h4>
+        <h4 className="movie__title">{movie.nameRU}</h4>
         <p className="movie__duration">{durationString}</p>
       </div>
       <a

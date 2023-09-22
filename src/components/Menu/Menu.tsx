@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { FC, MouseEvent, useContext, useEffect, useRef } from 'react';
+import { FC, MouseEvent, useEffect, useRef } from 'react';
 
 import { NavLink } from 'react-router-dom';
 import './Menu.css';
 import { paths } from '../../utils';
 import { images } from '../../images';
-import { MenuContext } from '../../contexts';
+import { MenuProps } from './lib/types';
 
-export const Menu: FC = () => {
-  const { isMenuOpen, handleExitClick } = useContext(MenuContext);
+export const Menu: FC<MenuProps> = ({ exit, isOpen }) => {
   const menuRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -19,29 +18,26 @@ export const Menu: FC = () => {
 
   function handleOverlayClick(event: MouseEvent<HTMLDivElement>) {
     if (event.target === event.currentTarget) {
-      handleExitClick!();
+      exit();
     }
   }
 
   return (
     <div
-      className={`menu-wrapper ${isMenuOpen ? 'menu-wrapper_active' : ''}`}
+      className={`menu-wrapper ${isOpen ? 'menu-wrapper_active' : ''}`}
       onClick={handleOverlayClick}
     >
-      <section
-        className={`menu ${isMenuOpen ? 'menu_active' : ''}`}
-        ref={menuRef}
-      >
+      <section className={`menu ${isOpen ? 'menu_active' : ''}`} ref={menuRef}>
         <button
           className="menu__exit"
-          onClick={handleExitClick}
+          onClick={exit}
           aria-label="выйти из меню"
         />
         <nav className="menu__nav">
           <ul className="menu__nav-list">
             <li>
               <NavLink
-                onClick={handleExitClick}
+                onClick={exit}
                 className={({ isActive }) =>
                   `menu__link ${isActive ? 'menu__link_active' : ''}`
                 }
@@ -52,7 +48,7 @@ export const Menu: FC = () => {
             </li>
             <li>
               <NavLink
-                onClick={handleExitClick}
+                onClick={exit}
                 className={({ isActive }) =>
                   `menu__link ${isActive ? 'menu__link_active' : ''}`
                 }
@@ -63,7 +59,7 @@ export const Menu: FC = () => {
             </li>
             <li>
               <NavLink
-                onClick={handleExitClick}
+                onClick={exit}
                 className={({ isActive }) =>
                   `menu__link ${isActive ? 'menu__link_active' : ''}`
                 }
@@ -74,7 +70,7 @@ export const Menu: FC = () => {
             </li>
           </ul>
           <NavLink
-            onClick={handleExitClick}
+            onClick={exit}
             className={({ isActive }) =>
               `menu__link menu__link_type_profile ${
                 isActive ? 'menu__link_active' : ''

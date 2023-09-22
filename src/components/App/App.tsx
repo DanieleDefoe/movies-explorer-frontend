@@ -1,8 +1,7 @@
-/* eslint-disable no-constant-condition */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BackendMovie, User, auth, getSavedMovies, paths } from '../../utils';
-import { lazy, useState, useEffect } from 'react';
+import { lazy, useState, useEffect, useCallback } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -93,25 +92,30 @@ export const App = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   const [savedMovies, setSavedMovies] = useState<Array<BackendMovie>>([]);
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const [popupOpen, setPopupOpen] = useState<boolean>(false);
   const [popupType, setPopupType] = useState<'error' | 'success'>();
   const [popupMessage, setPopupMessage] = useState<string>('');
 
-  useEffect(() => {
-    function handleEscapeClick(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        setPopupOpen(false);
-      }
+  const handleEscapeClick = useCallback(function handleEscapeClick(
+    event: KeyboardEvent,
+  ) {
+    if (event.key === 'Escape') {
+      setPopupOpen(false);
     }
+  }, []);
 
-    window.addEventListener('keyup', handleEscapeClick);
+  useEffect(() => {
+    if (popupOpen) {
+      window.addEventListener('keyup', handleEscapeClick);
+    }
 
     return () => {
       window.removeEventListener('keyup', handleEscapeClick);
     };
-  }, []);
+  }, [popupOpen]);
+
+  console.log(popupOpen);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -123,23 +127,15 @@ export const App = () => {
     checkToken();
   }, [isLoggedIn]);
 
-  function handleMenuClick() {
-    setIsMenuOpen(true);
-  }
-
-  function handleExitClick() {
-    setIsMenuOpen(false);
-  }
-
-  function handleLogin() {
+  const handleLogin = useCallback(function handleLogin() {
     setIsLoggedIn(true);
-  }
+  }, []);
 
-  function handleLogout() {
+  const handleLogout = useCallback(function handleLogout() {
     setIsLoggedIn(false);
-  }
+  }, []);
 
-  async function fetchSavedMovies() {
+  const fetchSavedMovies = useCallback(async function fetchSavedMovies() {
     try {
       const res = await getSavedMovies();
       const data = await checkResponse(res);
@@ -150,9 +146,9 @@ export const App = () => {
       setPopupMessage('Произошла ошибка при загрузке сохраненных фильмов');
       setPopupOpen(true);
     }
-  }
+  }, []);
 
-  async function checkToken() {
+  const checkToken = useCallback(async function checkToken() {
     try {
       const res = await auth.getContent();
       const data = await checkResponse(res);
@@ -171,9 +167,12 @@ export const App = () => {
       setPopupOpen(true);
       handleLogout();
     }
-  }
+  }, []);
 
-  async function authorizeUser(email: string, password: string) {
+  const authorizeUser = useCallback(async function authorizeUser(
+    email: string,
+    password: string,
+  ) {
     try {
       setIsSearchLoading(true);
       const res = await auth.authorize(email, password);
@@ -190,9 +189,9 @@ export const App = () => {
     } finally {
       setIsSearchLoading(false);
     }
-  }
+  }, []);
 
-  async function logoutUser() {
+  const logoutUser = useCallback(async function logoutUser() {
     try {
       await auth.logout();
       setCurrentUser(null);
@@ -203,9 +202,13 @@ export const App = () => {
       setPopupMessage('При выходе из аккаунта произошла ошибка');
       setPopupOpen(true);
     }
-  }
+  }, []);
 
-  async function registerUser(name: string, email: string, password: string) {
+  const registerUser = useCallback(async function registerUser(
+    name: string,
+    email: string,
+    password: string,
+  ) {
     try {
       setIsSearchLoading(true);
       const res = await auth.register(name, email, password);
@@ -220,9 +223,12 @@ export const App = () => {
     } finally {
       setIsSearchLoading(false);
     }
-  }
+  }, []);
 
-  async function updateUserData(name: string, email: string) {
+  const updateUserData = useCallback(async function updateUserData(
+    name: string,
+    email: string,
+  ) {
     try {
       setIsSearchLoading(true);
       const res = await auth.updateUserInfo(name, email);
@@ -241,7 +247,7 @@ export const App = () => {
     } finally {
       setIsSearchLoading(false);
     }
-  }
+  }, []);
 
   return (
     <ContextsContainer
@@ -250,9 +256,6 @@ export const App = () => {
       signin={authorizeUser}
       signout={logoutUser}
       isLoggedIn={isLoggedIn}
-      isMenuOpen={isMenuOpen}
-      handleExitClick={handleExitClick}
-      handleMenuClick={handleMenuClick}
       isSearchLoading={isSearchLoading}
       updateUserData={updateUserData}
       savedMovies={savedMovies}

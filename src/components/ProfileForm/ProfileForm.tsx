@@ -81,6 +81,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
           disabled={!isEditing}
           id="email"
           name="email"
+          pattern="^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,}$"
           onChange={handleChange}
           minLength={5}
           maxLength={50}
@@ -102,8 +103,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
             isValid={
               validation.isValid &&
               !isSearchLoading &&
-              (values.email !== user.email || values.name !== user.name) &&
-              EMAIL_REGEX.test(values.email)
+              (values.email !== user.email || values.name !== user.name)
             }
           />
         ) : (

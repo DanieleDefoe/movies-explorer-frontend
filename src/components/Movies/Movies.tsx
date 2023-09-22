@@ -8,7 +8,7 @@ import {
   calculateMoviesAmount,
 } from '../../utils';
 
-export const Movies: FC<MoviesProps> = ({ movies, type, isLoading, lang }) => {
+export const Movies: FC<MoviesProps> = ({ movies, type, isLoading }) => {
   const [moviesAmount, setMoviesAmount] = useState<CalcMoviesAmount>(() =>
     calculateMoviesAmount(),
   );
@@ -62,7 +62,7 @@ export const Movies: FC<MoviesProps> = ({ movies, type, isLoading, lang }) => {
                 (movie) =>
                   movie && (
                     <li key={isSavedMovie(movie) ? movie.movieId : movie.id}>
-                      <Movie lang={lang} type={type} movie={movie} />
+                      <Movie type={type} movie={movie} />
                     </li>
                   ),
               )}

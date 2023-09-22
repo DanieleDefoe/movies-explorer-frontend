@@ -12,6 +12,7 @@ export const Input: FC<InputProps> = ({
   minLength,
   maxLength,
   placeholder,
+  pattern,
 }) => {
   return (
     <input
@@ -22,6 +23,7 @@ export const Input: FC<InputProps> = ({
       onChange={onChange}
       name={name}
       minLength={minLength}
+      pattern={pattern}
       maxLength={maxLength}
       placeholder={placeholder}
       required

@@ -1,12 +1,6 @@
 import { BackendMovie, User } from '../../utils';
 import { ReactNode, Dispatch, SetStateAction } from 'react';
 
-export interface MenuContextProps {
-  isMenuOpen: boolean;
-  handleMenuClick?(): void;
-  handleExitClick?(): void;
-}
-
 export interface DataContextValues {
   signin(email: string, password: string): any;
   signup(name: string, email: string, password: string): any;
@@ -25,7 +19,4 @@ export interface DataContextValues {
 export interface ContextProviderProps extends DataContextValues {
   user: User | null;
   children: ReactNode;
-  isMenuOpen: boolean;
-  handleExitClick(): void;
-  handleMenuClick(): void;
 }

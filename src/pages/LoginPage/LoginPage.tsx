@@ -64,6 +64,7 @@ export const LoginPage = () => {
             type="email"
             id="email"
             name="email"
+            pattern="^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,}$"
             onChange={handleChange}
             value={values.email || ''}
             minLength={5}
@@ -93,9 +94,7 @@ export const LoginPage = () => {
           question="Ещё не зарегистрированы?"
           to={paths.signup}
           linkText="Регистрация"
-          isValid={
-            isValid && !isSearchLoading && EMAIL_REGEX.test(values.email)
-          }
+          isValid={isValid && !isSearchLoading}
         />
       </Form>
     </Auth>
